@@ -1,0 +1,15 @@
+Project was based on this
+https://spring.io/guides/tutorials/spring-boot-kotlin/
+
+eclipse was used and the following plugs were added
+Kotlin Plugin for Eclipse 0.8.18
+Gradle IDE Pack 3.8.x+1.0.x+2.2.x (seem to install all sorts of other gradle plugins)
+could not get to run however, within eclipse
+Error: Could not find or load main class com.wgoldman.kotlin.KotlinApplicationKt
+Caused by: java.lang.ClassNotFoundException: com.wgoldman.kotlin.KotlinApplicationKt
+
+could get to run from command line
+to build from command line run
+gradlew clean build
+to run from command line run above, then run
+gradlew bootrun
