@@ -8,7 +8,7 @@ could not get to run however, within eclipse
 Error: Could not find or load main class com.wgoldman.kotlin.KotlinApplicationKt
 Caused by: java.lang.ClassNotFoundException: com.wgoldman.kotlin.KotlinApplicationKt
 
-could get to run from command line
+Could get to run from command line
 to build from command line run
 gradlew clean build
 to run from command line run above, then run
