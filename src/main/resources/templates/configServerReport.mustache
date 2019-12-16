@@ -1,0 +1,15 @@
+{{> header}}
+
+<h1>{{title}}</h1>
+
+<table>
+{{#configServerReport}}
+<tr>
+    <td>{{appContext}}</td>
+    <td>{{appEnv}}</td>
+    <td>{{httpProp}}</td>
+</tr>
+{{/configServerReport}}
+</table>
+
+{{> footer}}
