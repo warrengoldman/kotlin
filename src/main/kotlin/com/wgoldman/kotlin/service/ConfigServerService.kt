@@ -50,10 +50,13 @@ class ConfigServerService {
   }
   fun getAppHttpProps(appProps:List<String>, appProperties: MutableList<AppData>) {
 	  for (appProp in appProps) {
-		  if (appProp.contains("http:") && !appProp.contains("#")) {
+		  if (hasUrl(appProp) && !appProp.contains("#")) {
 			  appProperties.add(AppData("", "", appProp))
 		  }
 	  }
+  }
+  fun hasUrl(appProp: String) : Boolean {
+	  return appProp.contains("http:") || appProp.contains("v00") || appProp.contains("paceport.pacelabs.com");
   }
   fun getAppProps(app: String, appContext: String, env: String) : List<String> {
 	  try {
