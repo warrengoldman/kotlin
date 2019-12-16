@@ -6,8 +6,6 @@ import org.springframework.ui.set
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
-import java.net.URL
-import java.io.File
 import org.springframework.beans.factory.annotation.Autowired
 
 @Controller
