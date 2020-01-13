@@ -7,6 +7,9 @@ import java.io.File
 @Service
 class ConfigServerService {
 
+	// this depends on config-server files existing at
+	// "C://pace/gitsb/config-server/"
+	// Improvements: could we use http to access the config server itself
   fun readHttpProperties() : List<AppData> {
 	  var appProperties = mutableListOf(AppData("","",""));
 	  readHttpProperties("clientportal", "ClientPortal", appProperties)
@@ -60,6 +63,7 @@ class ConfigServerService {
   }
   fun getAppProps(app: String, appContext: String, env: String) : List<String> {
 	  try {
+		  // Improvements: could we use http to access the config server itself
 		  var fileName = "C://pace/gitsb/config-server/" + app + "/" + appContext + "-" + env + ".properties" 
 		  return File(fileName).readLines()
 	  } catch (e: Exception) {

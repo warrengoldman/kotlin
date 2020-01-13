@@ -16,3 +16,15 @@ to build from command line run
 gradlew clean build
 to run from command line run above, then run
 gradlew bootrun
+
+app access points
+http://localhost:8080/configServerReport <== the result of this page depends on data existing on local machine at
+	C://pace/gitsb/config-server/ as is hardcoded in ConfigServerService.kt
+		Improvement 1: could we use http to access the config server itself
+
+http://localhost:8080 - brings up blog page (has title and header Blog, text field for comment, save button which is not operable)
+	Improvement 2: have this page post to saveComment below (may need ajax or some sort)
+
+http://localhost:8080/saveComment - without above improvement need to use post client to access, pass body of { "comment":"helloworld" }
+	returns html page with title and header of livehelloworld
+		
