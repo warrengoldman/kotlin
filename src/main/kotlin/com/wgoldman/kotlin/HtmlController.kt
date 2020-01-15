@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.MediaType;
 
 @Controller
 class HtmlController {
@@ -28,11 +29,10 @@ class HtmlController {
     return "configServerReport"
   }
 
-  @PostMapping("/saveComment")
-  fun saveComment(model: Model, @RequestBody comment: CommentForm): String {
-	  model["title"] = "live" + comment.comment
+  @PostMapping("/saveComment", consumes=arrayOf("text/plain"))
+  fun saveComment(model: Model, @RequestBody commentForm: String): String {
+	  model["title"] = "live" + commentForm
 	  return "blog"
   }
-  data class CommentForm (val comment: String)
   data class AppData (val appContext: String, val appEnv: String, val httpProp: String)
 }
