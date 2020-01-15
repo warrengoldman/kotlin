@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.beans.factory.annotation.Autowired
- import java.net.URLDecoder
+import java.net.URLDecoder
 import java.nio.charset.StandardCharsets
 
 @Controller
@@ -32,8 +32,13 @@ class HtmlController {
 
   @PostMapping("/saveComment", consumes=arrayOf("application/x-www-form-urlencoded;charset=UTF-8"))
   fun saveComment(model: Model, request: javax.servlet.http.HttpServletRequest): String {
-    var s = org.apache.commons.io.IOUtils.toString(request.getReader())
-    var fields = s.split("&")
+    var formContent = org.apache.commons.io.IOUtils.toString(request.getReader())
+    var commentForm = getCommentForm(formContent);
+    model["title"] = "comment:" + commentForm.comment + ", age:" + commentForm.age
+    return "blog"
+  }
+  fun getCommentForm(formContent: String) : CommentForm {
+    var fields = formContent.split("&")
     var comment = ""
     var age = ""
     for (field in fields) {
@@ -47,8 +52,7 @@ class HtmlController {
       }
     }
     var commentForm = CommentForm(comment, age)
-    model["title"] = "comment:" + commentForm.comment + ", age:" + age
-    return "blog"
+    return commentForm
   }
   class CommentForm { 
     val comment: String
