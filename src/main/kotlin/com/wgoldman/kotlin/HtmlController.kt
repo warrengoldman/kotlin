@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired
 import java.net.URLDecoder
 import java.nio.charset.StandardCharsets
 import com.wgoldman.kotlin.data.Person
+import java.net.URL
+import com.google.gson.Gson
 
 @Controller
 class HtmlController {
@@ -33,12 +35,20 @@ class HtmlController {
 
   @GetMapping("/persons")
   fun getPersons(model: Model): String {
-    // https://github.com/warrengoldman/data/blob/master/Person.1
+
     var persons = mutableListOf(Person("Joe", "West"))
     persons.add(Person("Jane", "East"))
+    persons.add(getPerson("1"))
     model["title"] = "Person List"
     model["persons"] = persons
     return "persons"
+  }
+
+  fun getPerson(personKey: String): Person {
+    var urlStr = "https://raw.githubusercontent.com/warrengoldman/data/master/Person." + personKey
+    var personJson = URL(urlStr).readText()
+    val person = Gson().fromJson(personJson, Person::class.java)
+    return person
   }
 
   @PostMapping("/saveComment", consumes=arrayOf("application/x-www-form-urlencoded;charset=UTF-8"))
