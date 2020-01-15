@@ -1,0 +1,16 @@
+{{> header}}
+
+<h1>{{title}}</h1>
+
+<table border="1px">
+<th>First Name</th>
+<th>Last Name</th>
+{{#persons}}
+<tr>
+    <td>{{firstName}}</td>
+    <td>{{lastName}}</td>
+</tr>
+{{/persons}}
+</table>
+
+{{> footer}}

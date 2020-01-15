@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.beans.factory.annotation.Autowired
 import java.net.URLDecoder
 import java.nio.charset.StandardCharsets
+import com.wgoldman.kotlin.data.Person
 
 @Controller
 class HtmlController {
@@ -28,6 +29,16 @@ class HtmlController {
 	  var httpProps = configServerService.readHttpProperties()
     model["configServerReport"] = httpProps
     return "configServerReport"
+  }
+
+  @GetMapping("/persons")
+  fun getPersons(model: Model): String {
+    // https://github.com/warrengoldman/data/blob/master/Person.1
+    var persons = mutableListOf(Person("Joe", "West"))
+    persons.add(Person("Jane", "East"))
+    model["title"] = "Person List"
+    model["persons"] = persons
+    return "persons"
   }
 
   @PostMapping("/saveComment", consumes=arrayOf("application/x-www-form-urlencoded;charset=UTF-8"))
