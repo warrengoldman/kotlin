@@ -27,6 +27,8 @@ repositories {
 }
 
 dependencies {
+	implementation("commons-io:commons-io:2.6")
+	implementation("com.google.code.gson:gson:2.8.6")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-mustache")
 	implementation("org.springframework.boot:spring-boot-starter-web")
