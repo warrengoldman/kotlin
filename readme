@@ -27,4 +27,6 @@ http://localhost:8080 - brings up blog page (has title and header Blog, text fie
 
 http://localhost:8080/saveComment - without above improvement need to use post client to access, pass body of { "comment":"helloworld" }
 	returns html page with title and header of livehelloworld
-		
+
+http://localhost:8080/persons
+	shows a grid of persons, 2 are stubbed, 1 is stored in a file in github
